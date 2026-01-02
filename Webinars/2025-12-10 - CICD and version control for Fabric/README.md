@@ -212,3 +212,12 @@ For GitHub, BPA validation is already configured using a `pull_request` trigger 
 
 The configuration is defined in:
 - `pr-validation.yaml`
+
+
+
+**Note:**  
+   On some systems (especially Windows), cloning or working with this repository may fail due to long file paths in the `src` folder.  
+   If you encounter path length issues, run the following command before cloning or copying files:
+
+   ```bash
+   git config --global core.longpaths true
