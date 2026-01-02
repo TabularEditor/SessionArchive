@@ -1,0 +1,79 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "name": "Ingest",
+        "state": "Inactive",
+        "description": "Run ingestion notebook load data from SpaceParts SQL Database into the Landing Lakehouse",
+        "type": "TridentNotebook",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "b7cb9b0a-a260-4c4b-8e48-a3cb69f04988",
+          "workspaceId": "5181c808-99b6-4251-8e58-070b20d31072"
+        }
+      },
+      {
+        "name": "Enrich",
+        "state": "Inactive",
+        "type": "TridentNotebook",
+        "dependsOn": [
+          {
+            "activity": "Ingest",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "3f9a00ca-44e2-4fef-9126-0cd138105f43",
+          "workspaceId": "1ac14f09-c868-4ea8-89db-d93941a8b3a6"
+        }
+      },
+      {
+        "name": "Refresh SpaceParts",
+        "state": "Inactive",
+        "type": "PBISemanticModelRefresh",
+        "dependsOn": [
+          {
+            "activity": "Enrich",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "method": "post",
+          "waitOnCompletion": true,
+          "commitMode": "Transactional",
+          "operationType": "SemanticModelRefresh",
+          "groupId": "6fdb95dd-1565-4bad-ab6d-07df2aaaca9c",
+          "datasetId": "c406faf2-1121-4ca3-8a0f-23dc73026bf7"
+        },
+        "externalReferences": {
+          "connection": "73537455-5582-4247-abab-28b5a53bcb9f"
+        }
+      }
+    ]
+  }
+}

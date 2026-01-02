@@ -1,0 +1,9 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definitionProperties/2.0.0/schema.json",
+  "version": "4.0",
+  "datasetReference": {
+    "byConnection": {
+      "connectionString": "Data Source=\"4vft62jnceaujcmrpa4ib27kuq-ubv5teutsnsufbwwj6ezco7vj4.datawarehouse.fabric.microsoft.com\";initial catalog=Curated;access mode=readonly;integrated security=ClaimsToken;semanticmodelid=90c78d27-49f6-4236-9b8c-f87b72915ae6;"
+    }
+  }
+}
