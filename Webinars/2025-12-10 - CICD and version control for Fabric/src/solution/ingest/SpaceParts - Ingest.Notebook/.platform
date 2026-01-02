@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "SpaceParts - Ingest",
+    "description": "This notebook handles the ingestion of data from the SpacePartsDW database into the Landing Lakehouse."
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "901a225d-06dd-b750-4991-02ea7efbac80"
+  }
+}

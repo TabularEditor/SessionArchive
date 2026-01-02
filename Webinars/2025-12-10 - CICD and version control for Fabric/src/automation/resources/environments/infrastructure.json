@@ -1,0 +1,57 @@
+{
+    "name": "SpaceParts - {layer} [{environment}]",
+    "generic": {
+        "capacity_name": "YOUR_CAPACITY_NAME_HERE",
+        "permissions": {
+            "Admin": [
+                {"type": "Group", "id": "00000000-0000-0000-0000-000000000000"}
+            ]
+        },
+        "fabric_connections":  [
+            {
+                "name": "SpaceParts-SemanticModel",
+		        "type": "PowerBIDatasets",
+                "auth_type": "ServicePrincipal"
+            }
+        ]
+    },
+    "layers" : 
+    {
+        "Core": { 
+            "items": {
+                "SQLDatabase": [
+                    {
+                        "item_name": "Metadata",
+                        "skip_item_creation": true,
+                        "connection_name": "SpaceParts-MetadataDB [{environment}]"
+                    }
+                ]
+            }
+        },
+        "Store": { 
+            "items": {
+                "Lakehouse": [
+                    {
+                        "item_name": "Curated",
+                        "skip_item_creation": true, 
+                        "connection_name": "SpaceParts-Curated [{environment}]"
+                    }
+                ]
+            }
+        },
+        "Ingest": { },
+        "Prepare": { },
+        "Model": {
+            "permissions": {
+                "Admin": [
+                    {"type": "WorkspaceIdentity", "name": "SpaceParts - Orchestrate [{environment}]"}
+                ]
+            }
+        },
+        "Present": { },
+        "Orchestrate": { 
+            "create_workspace_identity": true
+        }
+    }
+}
+

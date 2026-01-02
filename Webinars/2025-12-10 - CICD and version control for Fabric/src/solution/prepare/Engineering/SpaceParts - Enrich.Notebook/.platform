@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "SpaceParts - Enrich",
+    "description": "Notebook for creating shortcuts for all tables in the Landing Lakehouse in both Base and Curated. "
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "bc3787f5-ccb0-a376-4c53-86eea668bc49"
+  }
+}

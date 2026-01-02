@@ -1,0 +1,125 @@
+# PR Validation Pipeline - Best Practice Analyzer for Semantic Models
+# Triggers on pull requests targeting the main branch
+
+trigger: none
+
+pr:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: 'windows-latest'
+
+stages:
+  - stage: ValidateSemanticModels
+    displayName: 'Validate Semantic Models'
+    jobs:
+      - job: RunBPA
+        displayName: 'Run Best Practice Analyzer'
+        steps:
+          - checkout: self
+            displayName: 'Checkout repository'
+
+          - task: PowerShell@2
+            displayName: 'Download Tabular Editor'
+            inputs:
+              targetType: 'inline'
+              script: |
+                $toolPath = "$(Build.SourcesDirectory)\_tools\TabularEditor"
+                New-Item -ItemType Directory -Path $toolPath -Force | Out-Null
+                
+                Write-Host "Downloading Tabular Editor binaries..."
+                $downloadUrl = "https://github.com/TabularEditor/TabularEditor/releases/latest/download/TabularEditor.Portable.zip"
+                $zipFile = "$toolPath\TabularEditor.zip"
+                
+                Invoke-WebRequest -Uri $downloadUrl -OutFile $zipFile
+                Expand-Archive -Path $zipFile -DestinationPath $toolPath -Force
+                
+                Write-Host "Tabular Editor downloaded successfully"
+
+          - task: PowerShell@2
+            displayName: 'Run BPA on Semantic Models'
+            inputs:
+              targetType: 'inline'
+              script: |
+                $toolPath = "$(Build.SourcesDirectory)\_tools\TabularEditor\TabularEditor.exe"
+                $rulesPath = "$(Build.SourcesDirectory)\automation\resources\BPARules.json"
+                $modelsPath = "$(Build.SourcesDirectory)\solution\model"
+                
+                Write-Host "Searching for semantic models in: $modelsPath"
+                
+                # Get all first-level folders in solution/model
+                $modelFolders = Get-ChildItem -Path $modelsPath -Directory
+                
+                if ($modelFolders.Count -eq 0) {
+                    Write-Warning "No model folders found"
+                    exit 0
+                }
+                
+                Write-Host "Found $($modelFolders.Count) folder(s) to check"
+                
+                $hasErrors = $false
+                $modelsProcessed = 0
+                
+                foreach ($folder in $modelFolders) {
+                    $folderPath = $folder.FullName
+                    $definitionPath = $null
+                    
+                    # Check if folder contains a definition subfolder (TMDL format)
+                    $definitionFolder = Join-Path $folderPath "definition"
+                    if (Test-Path $definitionFolder) {
+                        $definitionPath = $definitionFolder
+                    }
+                    # Check for database.json (TMDL folder format)
+                    elseif (Test-Path (Join-Path $folderPath "database.json")) {
+                        $definitionPath = $folderPath
+                    }
+                    # Check for *.bim file (BIM format)
+                    else {
+                        $bimFile = Get-ChildItem -Path $folderPath -Filter "*.bim" -File | Select-Object -First 1
+                        if ($bimFile) {
+                            $definitionPath = $bimFile.FullName
+                        }
+                    }
+                    
+                    # Skip if no valid model definition found
+                    if (!$definitionPath) {
+                        Write-Host "Skipping folder (no model found): $($folder.Name)"
+                        continue
+                    }
+                    
+                    # Extract model name
+                    if ($folder.Name -match '^(.+)\.SemanticModel$') {
+                        $modelName = $matches[1]
+                    } else {
+                        $modelName = $folder.Name
+                    }
+                    
+                    $modelsProcessed++
+                    
+                    Write-Host "##[group]Analyzing: $modelName"
+                    Write-Host "Path: $definitionPath"
+                    
+                    # Run Tabular Editor BPA
+                    # -A: Analyze with rules file, -V: Verbose output
+                    $process = Start-Process -FilePath $toolPath `
+                        -ArgumentList """$definitionPath"" -A ""$rulesPath"" -V" `
+                        -NoNewWindow -Wait -PassThru
+                    
+                    if ($process.ExitCode -ne 0) {
+                        Write-Host "##vso[task.logissue type=error]BPA found errors in: $modelName"
+                        $hasErrors = $true
+                    }
+                    
+                    Write-Host "##[endgroup]"
+                }
+                
+                Write-Host "Processed $modelsProcessed semantic model(s)"
+                
+                if ($hasErrors) {
+                    Write-Host "##vso[task.complete result=Failed;]Best Practice Analyzer found errors"
+                    exit 1
+                }
+                
+                Write-Host "All semantic models passed BPA validation"

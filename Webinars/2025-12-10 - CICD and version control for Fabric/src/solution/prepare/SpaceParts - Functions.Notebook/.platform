@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "SpaceParts - Functions",
+    "description": "Function notebook holding generic function to be imported in other notebooks"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "1d8bf5fa-d2d1-92b3-4986-91e602d0e1b7"
+  }
+}

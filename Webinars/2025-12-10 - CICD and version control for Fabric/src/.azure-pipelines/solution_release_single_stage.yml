@@ -1,0 +1,36 @@
+parameters:
+  - name: environment
+    displayName: Target Environment
+    type: string
+    default: 'tst'
+  - name: build_parameter_file
+    displayName: Dynamically build parameter file
+    type: boolean
+    default: true
+  - name: debug_logging
+    displayName: Enable debug logging
+    type: boolean
+    default: false
+
+trigger: none
+pr: none 
+
+stages:
+- stage: Build
+  displayName: 'Build Solution'
+  jobs:
+  - template: _template_build_solution.yml
+    parameters:
+      environments: dev,tst,prd
+      build_parameter_file: ${{ parameters.build_parameter_file }}
+      
+
+- stage: Release
+  displayName: 'Release to Test'
+  dependsOn: Build
+  condition: succeeded()
+  jobs:
+  - template: _template_release_solution.yml
+    parameters:
+      debug_logging: ${{ parameters.debug_logging }}
+      environment: ${{ parameters.environment }}

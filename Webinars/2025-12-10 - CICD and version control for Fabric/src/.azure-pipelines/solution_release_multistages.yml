@@ -1,0 +1,45 @@
+parameters:
+  - name: build_parameter_file
+    displayName: Dynamically build parameter file
+    type: boolean
+    default: true
+  - name: debug_logging
+    displayName: Enable debug logging
+    type: boolean
+    default: false
+
+trigger:
+  branches:
+    include:
+      - releases/release*
+
+pr: none  # Optional: disable PR trigger if not needed
+
+# Allow manual execution
+stages:
+- stage: Build
+  displayName: 'Build Solution'
+  jobs:
+  - template: _template_build_solution.yml
+    parameters:
+      environments: tst,prd
+      build_parameter_file: ${{ parameters.build_parameter_file }}
+
+- stage: ReleaseTst
+  displayName: 'Release to Test'
+  dependsOn: Build
+  condition: succeeded()
+  jobs:
+  - template: _template_release_solution.yml
+    parameters:
+      environment: tst
+      debug_logging: ${{ parameters.debug_logging }}
+
+- stage: ReleasePrd
+  displayName: 'Release to Production'
+  dependsOn: ReleaseTst
+  condition: succeeded()
+  jobs:
+  - template: _template_release_solution.yml
+    parameters:
+      environment: prd
