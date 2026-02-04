@@ -5,7 +5,7 @@ This directory contains scripts used in the demos for the scripting and automati
 
 [The presentation is in this repo as a PDF](./scripting-automation-webinar-2026-02.pdf)
 
-The repo contains the following samples:
+The repo contains the following sample models and scripts, used during the presentation:
 
 - **[spaceparts.SemanticModel](./spaceparts.SemanticModel)**: A version of the SpaceParts semantic model containing UDFs
 - **[function-utils.csx](./function-utils.csx)**: C# script with utility methods for working with DAX UDFs
