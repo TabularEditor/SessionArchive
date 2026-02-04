@@ -1,0 +1,207 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "e582140151f91afe5337",
+  "position": {
+    "x": 22,
+    "y": 452,
+    "z": 8000,
+    "height": 246,
+    "width": 620,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "barChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Regions"
+                        }
+                      },
+                      "Hierarchy": "Regional Hierarchy"
+                    }
+                  },
+                  "Level": "System"
+                }
+              },
+              "queryRef": "Regions.Regional Hierarchy.System",
+              "nativeQueryRef": "Regional Hierarchy System",
+              "active": true
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Regions"
+                        }
+                      },
+                      "Hierarchy": "Regional Hierarchy"
+                    }
+                  },
+                  "Level": "Interplanetary Region"
+                }
+              },
+              "queryRef": "Regions.Regional Hierarchy.Interplanetary Region",
+              "nativeQueryRef": "Regional Hierarchy Interplanetary Region",
+              "active": false
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Regions"
+                        }
+                      },
+                      "Hierarchy": "Regional Hierarchy"
+                    }
+                  },
+                  "Level": "Territory"
+                }
+              },
+              "queryRef": "Regions.Regional Hierarchy.Territory",
+              "nativeQueryRef": "Regional Hierarchy Territory",
+              "active": false
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Regions"
+                        }
+                      },
+                      "Hierarchy": "Regional Hierarchy"
+                    }
+                  },
+                  "Level": "Station"
+                }
+              },
+              "queryRef": "Regions.Regional Hierarchy.Station",
+              "nativeQueryRef": "Regional Hierarchy Station",
+              "active": false
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "__Measures"
+                    }
+                  },
+                  "Property": "Actuals"
+                }
+              },
+              "queryRef": "__Measures.Actuals",
+              "nativeQueryRef": "Actuals"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "__Measures"
+                  }
+                },
+                "Property": "Actuals"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "dataPoint": [
+        {
+          "properties": {}
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "__Demo Measures"
+                        }
+                      },
+                      "Property": "ActualVsTargetColor"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "labels": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "__Demo Measures"
+                        }
+                      },
+                      "Property": "ActualVsTargetColor"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

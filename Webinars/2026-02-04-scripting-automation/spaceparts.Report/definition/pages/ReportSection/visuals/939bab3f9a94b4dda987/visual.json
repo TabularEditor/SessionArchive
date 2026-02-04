@@ -1,0 +1,1163 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "939bab3f9a94b4dda987",
+  "position": {
+    "x": 666,
+    "y": 164,
+    "z": 4000,
+    "height": 534,
+    "width": 594,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Regions"
+                        }
+                      },
+                      "Hierarchy": "Regional Hierarchy"
+                    }
+                  },
+                  "Level": "System"
+                }
+              },
+              "queryRef": "Regions.Regional Hierarchy.System",
+              "nativeQueryRef": "System",
+              "active": true
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Regions"
+                        }
+                      },
+                      "Hierarchy": "Regional Hierarchy"
+                    }
+                  },
+                  "Level": "Interplanetary Region"
+                }
+              },
+              "queryRef": "Regions.Regional Hierarchy.Interplanetary Region",
+              "nativeQueryRef": "Interplanetary Region",
+              "active": true
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Regions"
+                        }
+                      },
+                      "Hierarchy": "Regional Hierarchy"
+                    }
+                  },
+                  "Level": "Territory"
+                }
+              },
+              "queryRef": "Regions.Regional Hierarchy.Territory",
+              "nativeQueryRef": "Territory",
+              "active": false
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Regions"
+                        }
+                      },
+                      "Hierarchy": "Regional Hierarchy"
+                    }
+                  },
+                  "Level": "Station"
+                }
+              },
+              "queryRef": "Regions.Regional Hierarchy.Station",
+              "nativeQueryRef": "Station",
+              "active": false
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Customers"
+                        }
+                      },
+                      "Hierarchy": "Customer Hierarchy"
+                    }
+                  },
+                  "Level": "Account Type"
+                }
+              },
+              "queryRef": "Customers.Customer Hierarchy.Account Type",
+              "nativeQueryRef": "Account Type",
+              "active": false
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Customers"
+                        }
+                      },
+                      "Hierarchy": "Customer Hierarchy"
+                    }
+                  },
+                  "Level": "Key Account Name"
+                }
+              },
+              "queryRef": "Customers.Customer Hierarchy.Key Account Name",
+              "nativeQueryRef": "Key Account Name",
+              "active": false
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Customers"
+                        }
+                      },
+                      "Hierarchy": "Customer Hierarchy"
+                    }
+                  },
+                  "Level": "Account Name"
+                }
+              },
+              "queryRef": "Customers.Customer Hierarchy.Account Name",
+              "nativeQueryRef": "Account Name",
+              "active": false
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Customers"
+                        }
+                      },
+                      "Hierarchy": "Customer Hierarchy"
+                    }
+                  },
+                  "Level": "Customer Sold-To Name"
+                }
+              },
+              "queryRef": "Customers.Customer Hierarchy.Customer Sold-To Name",
+              "nativeQueryRef": "Customer Sold-To Name",
+              "active": false
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "__Measures"
+                    }
+                  },
+                  "Property": "Actuals"
+                }
+              },
+              "queryRef": "__Measures.Actuals",
+              "nativeQueryRef": "Actuals"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "__Measures"
+                    }
+                  },
+                  "Property": "Sales Target"
+                }
+              },
+              "queryRef": "__Measures.Sales Target",
+              "nativeQueryRef": "Target",
+              "displayName": "Target"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "__Measures"
+                    }
+                  },
+                  "Property": "Sales Target vs. Actuals (%)"
+                }
+              },
+              "queryRef": "__Measures.Sales Target vs. Actuals (%)",
+              "nativeQueryRef": "%",
+              "displayName": "%"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "__Measures"
+                    }
+                  },
+                  "Property": "Sales Target vs. Actuals (Δ)"
+                }
+              },
+              "queryRef": "__Measures.Sales Target vs. Actuals (Δ)",
+              "nativeQueryRef": "Δ",
+              "displayName": "Δ"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Invoices"
+                    }
+                  },
+                  "Property": "Standard Margin (%)"
+                }
+              },
+              "queryRef": "Invoices.Standard Margin (%)",
+              "nativeQueryRef": "Std. Margin",
+              "displayName": "Std. Margin"
+            }
+          ]
+        }
+      }
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "Regions.Regional Hierarchy.System"
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Regions.Regional Hierarchy.Interplanetary Region"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Regions.Regional Hierarchy.Territory"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Regions.Regional Hierarchy.Station"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Customers.Customer Hierarchy.Account Type"
+            ],
+            "isCollapsed": true
+          },
+          {
+            "queryRefs": [
+              "Customers.Customer Hierarchy.Key Account Name"
+            ],
+            "isCollapsed": true
+          },
+          {
+            "queryRefs": [
+              "Customers.Customer Hierarchy.Account Name"
+            ],
+            "isCollapsed": true
+          },
+          {
+            "queryRefs": [
+              "Customers.Customer Hierarchy.Customer Sold-To Name"
+            ],
+            "isCollapsed": true
+          }
+        ],
+        "root": {}
+      }
+    ],
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "FillRule": {
+                      "Input": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "__Measures"
+                            }
+                          },
+                          "Property": "Sales Target vs. Actuals (%)"
+                        }
+                      },
+                      "FillRule": {
+                        "linearGradient3": {
+                          "min": {
+                            "color": {
+                              "Literal": {
+                                "Value": "'#C56161'"
+                              }
+                            }
+                          },
+                          "mid": {
+                            "color": {
+                              "Literal": {
+                                "Value": "'#666666'"
+                              }
+                            },
+                            "value": {
+                              "Literal": {
+                                "Value": "0D"
+                              }
+                            }
+                          },
+                          "max": {
+                            "color": {
+                              "Literal": {
+                                "Value": "'#00A99D'"
+                              }
+                            }
+                          },
+                          "nullColoringStrategy": {
+                            "strategy": {
+                              "Literal": {
+                                "Value": "'asZero'"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "__Measures.Sales Target vs. Actuals (%)"
+          }
+        },
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "FillRule": {
+                      "Input": {
+                        "Measure": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "__Measures"
+                            }
+                          },
+                          "Property": "Sales Target vs. Actuals (Δ)"
+                        }
+                      },
+                      "FillRule": {
+                        "linearGradient3": {
+                          "min": {
+                            "color": {
+                              "Literal": {
+                                "Value": "'#C56161'"
+                              }
+                            }
+                          },
+                          "mid": {
+                            "color": {
+                              "Literal": {
+                                "Value": "'#666666'"
+                              }
+                            },
+                            "value": {
+                              "Literal": {
+                                "Value": "0D"
+                              }
+                            }
+                          },
+                          "max": {
+                            "color": {
+                              "Literal": {
+                                "Value": "'maxColor'"
+                              }
+                            }
+                          },
+                          "nullColoringStrategy": {
+                            "strategy": {
+                              "Literal": {
+                                "Value": "'asZero'"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "__Measures.Sales Target vs. Actuals (Δ)"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "__Measures.Actuals"
+          }
+        },
+        {
+          "properties": {
+            "icon": {
+              "kind": "Icon",
+              "layout": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Before'"
+                  }
+                }
+              },
+              "verticalAlignment": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Middle'"
+                  }
+                }
+              },
+              "value": {
+                "expr": {
+                  "Conditional": {
+                    "Cases": [
+                      {
+                        "Condition": {
+                          "Comparison": {
+                            "ComparisonKind": 2,
+                            "Left": {
+                              "Measure": {
+                                "Expression": {
+                                  "SourceRef": {
+                                    "Entity": "__Measures"
+                                  }
+                                },
+                                "Property": "Sales Target vs. Actuals (%)"
+                              }
+                            },
+                            "Right": {
+                              "Literal": {
+                                "Value": "0D"
+                              }
+                            }
+                          }
+                        },
+                        "Value": {
+                          "Literal": {
+                            "Value": "'CircleSymbolHigh'"
+                          }
+                        }
+                      },
+                      {
+                        "Condition": {
+                          "Comparison": {
+                            "ComparisonKind": 3,
+                            "Left": {
+                              "Measure": {
+                                "Expression": {
+                                  "SourceRef": {
+                                    "Entity": "__Measures"
+                                  }
+                                },
+                                "Property": "Sales Target vs. Actuals (%)"
+                              }
+                            },
+                            "Right": {
+                              "Literal": {
+                                "Value": "0D"
+                              }
+                            }
+                          }
+                        },
+                        "Value": {
+                          "Literal": {
+                            "Value": "'CircleSymbolLow'"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 0
+                }
+              }
+            ],
+            "metadata": "__Measures.Actuals"
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "rowPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "7D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            },
+            "titleAlignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            },
+            "autoSizeColumnWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Brands"
+                          }
+                        },
+                        "Property": "Class"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Private Brand'"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "metadata": "__Measures.Actuals"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Brands"
+                          }
+                        },
+                        "Property": "Class"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Private Brand'"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "metadata": "__Measures.Sales Target"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Brands"
+                          }
+                        },
+                        "Property": "Class"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Private Brand'"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "metadata": "__Measures.Sales Target vs. Actuals (%)"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Brands"
+                          }
+                        },
+                        "Property": "Class"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Private Brand'"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "metadata": "__Measures.Sales Target vs. Actuals (Δ)"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Brands"
+                          }
+                        },
+                        "Property": "Class"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Private Brand'"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "metadata": "Invoices.Standard Margin (%)"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Brands"
+                          }
+                        },
+                        "Property": "Class"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'SpaceParts Brand'"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "metadata": "__Measures.Actuals"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Brands"
+                          }
+                        },
+                        "Property": "Class"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'SpaceParts Brand'"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "metadata": "__Measures.Sales Target"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Brands"
+                          }
+                        },
+                        "Property": "Class"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'SpaceParts Brand'"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "metadata": "__Measures.Sales Target vs. Actuals (%)"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Brands"
+                          }
+                        },
+                        "Property": "Class"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'SpaceParts Brand'"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "metadata": "__Measures.Sales Target vs. Actuals (Δ)"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Brands"
+                          }
+                        },
+                        "Property": "Class"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'SpaceParts Brand'"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "metadata": "Invoices.Standard Margin (%)"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "total": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Brands"
+                        }
+                      },
+                      "Property": "Class"
+                    }
+                  }
+                ]
+              }
+            ],
+            "metadata": "__Measures.Actuals"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "total": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Brands"
+                        }
+                      },
+                      "Property": "Class"
+                    }
+                  }
+                ]
+              }
+            ],
+            "metadata": "__Measures.Sales Target"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "total": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Brands"
+                        }
+                      },
+                      "Property": "Class"
+                    }
+                  }
+                ]
+              }
+            ],
+            "metadata": "__Measures.Sales Target vs. Actuals (%)"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "total": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Brands"
+                        }
+                      },
+                      "Property": "Class"
+                    }
+                  }
+                ]
+              }
+            ],
+            "metadata": "__Measures.Sales Target vs. Actuals (Δ)"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "total": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Brands"
+                        }
+                      },
+                      "Property": "Class"
+                    }
+                  }
+                ]
+              }
+            ],
+            "metadata": "Invoices.Standard Margin (%)"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Regions.Regional Hierarchy.System"
+          }
+        }
+      ],
+      "columnFormatting": [
+        {
+          "properties": {
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1000000D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "__Measures.Actuals"
+          }
+        },
+        {
+          "properties": {
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1000000D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "__Measures.Sales Target"
+          }
+        },
+        {
+          "properties": {
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1000D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "__Measures.Sales Target vs. Actuals (Δ)"
+          }
+        }
+      ],
+      "subTotals": [
+        {
+          "properties": {
+            "rowSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "rowSubtotalsLabel": {
+              "expr": {
+                "Literal": {
+                  "Value": "''"
+                }
+              }
+            },
+            "perRowLevel": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "rowSubtotalsPosition": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Top'"
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "Row"
+          }
+        }
+      ],
+      "rowHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Right'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

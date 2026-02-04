@@ -1,0 +1,942 @@
+table Invoices
+	lineageTag: fba0b030-ca72-44ec-a0e3-98ad3bba0508
+
+	/// The delivery margin only considers the revenue and costs associated with freights, delivery and shipments.
+	measure 'Delivery Margin (%)' =
+			
+			VAR _TOTAL =
+			    CALCULATE (
+			        [Total Freight Surcharge],
+			        'Invoice Document Type'[Billing Document Type Code] IN {"invoice", "express"}
+			    )
+			VAR _MARGIN = [Delivery Margin (Value)]
+			RETURN
+			    DIVIDE (_MARGIN, _TOTAL)
+		formatString: #,##0.0%
+		displayFolder: 1. Value\d. Margins\III. Delivery Margin\%
+		lineageTag: 4d723c79-cfbc-4e96-b733-149429093b95
+
+	/// The delivery margin only considers the revenue and costs associated with freights, delivery and shipments.
+	measure 'Delivery Margin 1YP (%)' =
+			CALCULATE (
+			    [Delivery Margin (%)],
+			    DATEADD ('Date'[Date], -1, YEAR)
+			)
+		formatString: #,##0.0%
+		displayFolder: 1. Value\d. Margins\III. Delivery Margin\%
+		lineageTag: d15f4a1b-40e8-4af0-9fa8-4c8691b5702f
+
+	/// The delivery margin only considers the revenue and costs associated with freights, delivery and shipments.
+	measure 'Delivery Margin 2YP (%)' =
+			CALCULATE (
+			    [Delivery Margin (%)],
+			    DATEADD ('Date'[Date], -2, YEAR)
+			)
+		formatString: #,##0.0%
+		displayFolder: 1. Value\d. Margins\III. Delivery Margin\%
+		lineageTag: f3fe51e5-3af4-4573-a104-6f13b3475648
+
+	/// The delivery margin only considers the revenue and costs associated with freights, delivery and shipments.
+	measure 'Delivery Margin (Value)' =
+			CALCULATE (
+			    SUMX (
+			        'Invoices',
+			        'Invoices'[Freight] - 'Invoices'[Delivery Cost]
+			    ),
+			    'Invoice Document Type'[Billing Document Type Code] IN { "invoice", "express" }
+			)
+		formatString: #,##0
+		displayFolder: 1. Value\d. Margins\III. Delivery Margin\$
+		lineageTag: adf032e2-a94e-4c64-b116-3bae16b40c1c
+
+	/// The delivery margin only considers the revenue and costs associated with freights, delivery and shipments.
+	measure 'Delivery Margin 1YP (Value)' =
+			CALCULATE (
+			    [Delivery Margin (Value)],
+			    DATEADD ('Date'[Date], -1, YEAR)
+			)
+		formatString: #,##0
+		displayFolder: 1. Value\d. Margins\III. Delivery Margin\$
+		lineageTag: 92415e4c-e6e2-45ff-ab1a-8a11ff4fd364
+
+	/// The delivery margin only considers the revenue and costs associated with freights, delivery and shipments.
+	measure 'Delivery Margin 2YP (Value)' =
+			CALCULATE (
+			    [Delivery Margin (Value)],
+			    DATEADD ('Date'[Date], -2, YEAR)
+			)
+		formatString: #,##0
+		displayFolder: 1. Value\d. Margins\III. Delivery Margin\$
+		lineageTag: 04c7666b-55bd-42ea-a0fd-7982d9697d9b
+
+	/// The selling margin is the margin earned when considering only the revenue and costs associated with the product, before delivery
+	measure 'Selling Margin (%)' =
+			VAR _TOTAL =
+			    CALCULATE (
+			        [Total Net Invoice Value],
+			        'Invoice Document Type'[Billing Document Type Code] = "invoice"
+			    )
+			VAR _MARGIN = [Selling Margin (Value)]
+			RETURN
+			    DIVIDE (_MARGIN, _TOTAL)
+		formatString: #,##0.0%
+		displayFolder: 1. Value\d. Margins\II. Selling Margin\%
+		lineageTag: 3663b091-8e64-487b-95c5-a3a356cd6b5b
+
+	/// The selling margin is the margin earned when considering only the revenue and costs associated with the product, before delivery
+	measure 'Selling Margin 1YP (%)' = ```
+			CALCULATE (
+			    [Selling Margin (%)],
+			    DATEADD ('Date'[Date], -1, YEAR)
+			) 
+			```
+		formatString: #,##0.0%
+		displayFolder: 1. Value\d. Margins\II. Selling Margin\%
+		lineageTag: 2463193f-b427-4961-b506-cabae06dc450
+
+	/// The selling margin is the margin earned when considering only the revenue and costs associated with the product, before delivery
+	measure 'Selling Margin 2YP (%)' = ```
+			CALCULATE (
+			    [Selling Margin (%)],
+			    DATEADD ('Date'[Date], -2, YEAR)
+			) 
+			```
+		formatString: #,##0.0%
+		displayFolder: 1. Value\d. Margins\II. Selling Margin\%
+		lineageTag: 3b62bc90-c3ad-4940-b1db-cec84413ba1c
+
+	/// The selling margin is the margin earned when considering only the revenue and costs associated with the product, before delivery
+	measure 'Selling Margin (Value)' =
+			
+			CALCULATE (
+			    SUMX (
+			        'Invoices',
+			        'Invoices'[Net Invoice Value] - 'Invoices'[Net Invoice COGS]
+			    ),
+			    'Invoice Document Type'[Billing Document Type Code] = "invoice"
+			)
+		formatString: #,##0
+		displayFolder: 1. Value\d. Margins\II. Selling Margin\$
+		lineageTag: be448632-beb1-4250-b5dd-9a0faaab6f52
+
+	/// The selling margin is the margin earned when considering only the revenue and costs associated with the product, before delivery
+	measure 'Selling Margin 1YP (Value)' =
+			CALCULATE (
+			    [Selling Margin (Value)],
+			    DATEADD ('Date'[Date], -1, YEAR)
+			)
+		formatString: #,##0
+		displayFolder: 1. Value\d. Margins\II. Selling Margin\$
+		lineageTag: f22d9d95-877a-4e38-83be-7f7b12b13576
+
+	/// The selling margin is the margin earned when considering only the revenue and costs associated with the product, before delivery
+	measure 'Selling Margin 2YP (Value)' =
+			CALCULATE (
+			    [Selling Margin (Value)],
+			    DATEADD ('Date'[Date], -2, YEAR)
+			)
+		formatString: #,##0
+		displayFolder: 1. Value\d. Margins\II. Selling Margin\$
+		lineageTag: 20d39d89-73f2-47b3-aa46-1098a58a9077
+
+	/// The standard margin is the selling margin + the delivery margin
+	/// It takes into account all revenues and costs.
+	measure 'Standard Margin (%)' = ```
+			
+			DIVIDE ( [Standard Margin (Value)], [Net Sales] ) 
+			```
+		formatString: #,##0.0%
+		displayFolder: 1. Value\d. Margins\I. Std. Margin\%
+		lineageTag: b83ec207-e4f4-4f0d-919d-c3b1a17e900e
+
+	/// The standard margin is the selling margin + the delivery margin
+	/// It takes into account all revenues and costs.
+	measure 'Standard Margin 1YP (%)' = ```
+			CALCULATE (
+			    [Standard Margin (%)],
+			    DATEADD ('Date'[Date], -1, YEAR)
+			) 
+			```
+		formatString: #,##0.0%
+		displayFolder: 1. Value\d. Margins\I. Std. Margin\%
+		lineageTag: d62ee724-dceb-407c-9129-aa7dbe586ab4
+
+	/// The standard margin is the selling margin + the delivery margin
+	/// It takes into account all revenues and costs.
+	measure 'Standard Margin 2YP (%)' = ```
+			CALCULATE (
+			    [Standard Margin (%)],
+			    DATEADD ('Date'[Date], -2, YEAR)
+			) 
+			```
+		formatString: #,##0.0%
+		displayFolder: 1. Value\d. Margins\I. Std. Margin\%
+		lineageTag: 297a502c-34d3-4eb5-856c-33e65253a609
+
+	/// The standard margin is the selling margin + the delivery margin
+	/// It takes into account all revenues and costs.
+	measure 'Standard Margin (Value)' = ```
+			
+			VAR _RATE = MAX ('Exchange Rate'[Rate])
+			RETURN
+			    CALCULATE (
+			
+			        -- Convert to common currency (WAT)
+			        SUMX (
+			            'Invoices',
+			
+			            -- Net Sales
+			            VAR _NET = 
+			            ('Invoices'[Net Invoice Value]
+			                + 'Invoices'[Freight]
+			                - 'Invoices'[Taxes & Commercial Fees]
+			                + 'Invoices'[Late Delivery Penalties]
+			                + 'Invoices'[Overdue Payment Penalties] )
+			
+			            -- COGS
+			            VAR _COST =
+			            ('Invoices'[Net Invoice COGS] 
+			                + 'Invoices'[Delivery Cost] )
+			
+			            RETURN
+			
+			            ( _NET - _COST ) / RELATED ('Budget Rate'[Rate])
+			        )
+			
+			            -- Convert to selected rate
+			            * _RATE,
+			
+			        -- Limit to dates in scope
+			        'Date'[IsDateInScope] = TRUE
+			    )
+			```
+		formatString: #,##0
+		displayFolder: 1. Value\d. Margins\I. Std. Margin\$
+		lineageTag: ff8b2241-4dee-401a-af2c-a246e02f2a40
+
+	/// The standard margin is the selling margin + the delivery margin
+	/// It takes into account all revenues and costs.
+	measure 'Standard Margin 1YP (Value)' =
+			CALCULATE (
+			    [Standard Margin (Value)],
+			    DATEADD ('Date'[Date], -1, YEAR)
+			)
+		formatString: #,##0
+		displayFolder: 1. Value\d. Margins\I. Std. Margin\$
+		lineageTag: ecefc65d-3c1e-4680-8aee-7b9f7623d8c6
+
+	/// The standard margin is the selling margin + the delivery margin
+	/// It takes into account all revenues and costs.
+	measure 'Standard Margin 2YP (Value)' =
+			CALCULATE (
+			    [Standard Margin (Value)],
+			    DATEADD ('Date'[Date], -2, YEAR)
+			)
+		formatString: #,##0
+		displayFolder: 1. Value\d. Margins\I. Std. Margin\$
+		lineageTag: 89b286d1-1b3a-45de-9753-fc201a384161
+
+	measure 'Gross Sales' =
+			
+			[Total Net Invoice Value]
+			    + [Total Freight Surcharge]
+			    + [Total Late Delivery Penalties]
+			    + [Total Overdue Payment Penalties]
+			    - [Total Taxes & Commercial Fees]
+		formatString: #,##0
+		displayFolder: 1. Value\a. Gross Sales Actuals\I. Total
+		lineageTag: 683196db-ff3e-4763-8161-a11c1626c646
+
+	measure 'Gross Sales (Selected Unit)' =
+			
+			-- Sideways recursion
+			CALCULATE (
+			    [Actuals],
+			    ALL ( '1) Selected Metric'[Select a Measure] ),
+			    '1) Selected Metric'[Select a Measure] = "Gross Sales"
+			)
+		formatString: #,##0
+		isHidden
+		displayFolder: 1. Value\a. Gross Sales Actuals\I. Total
+		lineageTag: c6803610-3c05-4cb0-bf47-500545195637
+
+	measure 'MTD Gross Sales' =
+			
+			CALCULATE (
+			    [Gross Sales],
+			    CALCULATETABLE (
+			        DATESMTD ('Date'[Date]),
+			        'Date'[IsDateInScope]
+			    )
+			)
+		formatString: #,##0
+		displayFolder: 1. Value\a. Gross Sales Actuals\I. Total
+		lineageTag: ea816f78-4faf-4f3f-8d4e-02121230e7db
+
+	/// This measure is theSumof column 'Invoices'[Net Invoice Value]
+	measure 'Total Net Invoice Value' =
+			SUMX (
+			    'Invoices',
+			    'Invoices'[Net Invoice Value]
+			        / RELATED ( 'Budget Rate'[Rate] )
+			)
+			    * MAX ( 'Exchange Rate'[Rate] )
+		formatString: #,##0
+		isHidden
+		displayFolder: 1. Value\a. Gross Sales Actuals\I. Total
+		lineageTag: 4743b7bf-79cb-4660-846e-243bcf724584
+
+	measure 'Gross Sales 1YP' =
+			
+			CALCULATE (
+			    [Gross Sales],
+			    DATEADD ('Date'[Date], -1, YEAR)
+			)
+		formatString: #,##0
+		displayFolder: 1. Value\a. Gross Sales Actuals\II. 1YP\Daily
+		lineageTag: 16f7ed63-9149-4aa0-a7b0-fb57300ee516
+
+	measure 'Gross Sales vs 1YP (%)' =
+			
+			VAR _TARGET = [Gross Sales 1YP]
+			VAR _DELTA  = [Gross Sales] - _TARGET
+			VAR _PERC   = DIVIDE ( _DELTA, _TARGET )
+			RETURN
+			_PERC
+		formatString: #,##0.0% ↑;#,##0.0% ↓;#,##0.0%
+		displayFolder: 1. Value\a. Gross Sales Actuals\II. 1YP\Daily
+		lineageTag: c71f604e-ded0-4bee-b453-f1ba4844b672
+
+	measure 'Gross Sales vs 1YP (Δ)' =
+			
+			[Gross Sales] - [Gross Sales 1YP]
+		formatString: #,##0 ↑;#,##0 ↓;#,##0
+		displayFolder: 1. Value\a. Gross Sales Actuals\II. 1YP\Daily
+		lineageTag: 8f2720aa-6d1b-43d8-a43c-58e1293ab7bf
+
+	measure 'MTD Gross Sales 1YP' =
+			
+			-- Calculates Target for the current month/year selection
+			VAR _CurrentMonth =
+			    CALCULATE (
+			        [Gross Sales 1YP],
+			        ALL ( 'Date' ),
+			        VALUES (
+			            'Date'[Calendar Month Year (ie Jan 21)]
+			        )
+			    )
+			
+			-- Computes rate at which Target increases through the month
+			VAR _CurrentMonthWDMTD =
+			    POWER (
+			        CALCULATE (
+			            MAX ( 'Date'[Workdays MTD %] ),
+			            'Date'[IsDateInScope] = TRUE
+			        ),
+			        0.93
+			    )
+			VAR _CurrentMonthWDTotal =
+			    POWER (
+			        CALCULATE (
+			            MAX ( 'Date'[Workdays MTD %] )
+			        ),
+			        0.93
+			    )
+			VAR _Period =
+			    SELECTEDVALUE (
+			        '4) Selected Period'[Period]
+			    )
+			VAR _HasOneMonth =
+			    HASONEVALUE (
+			        'Date'[Calendar Month Year (ie Jan 21)]
+			    )
+			RETURN
+			    -- return MTD value if a month is selected
+			    IF.EAGER (
+			        _HasOneMonth && _Period = "Full Period",
+			        _CurrentMonthWDTotal
+			            * _CurrentMonth,
+			        IF (
+			            _HasOneMonth,
+			            _CurrentMonthWDMTD
+			                * _CurrentMonth
+			        )
+			    )
+		formatString: #,##0
+		displayFolder: 1. Value\a. Gross Sales Actuals\II. 1YP\MTD
+		lineageTag: c286b77d-b313-4767-8645-1fd3a5d0c0c8
+
+	measure 'MTD Gross Sales vs 1YP (%)' =
+			
+			VAR _TARGET = [MTD Gross Sales 1YP]
+			VAR _DELTA  = [MTD Gross Sales] - _TARGET
+			VAR _PERC   = DIVIDE ( _DELTA, _TARGET )
+			RETURN
+			_PERC
+		formatString: #,##0.0% ↑;#,##0.0% ↓;#,##0.0%
+		displayFolder: 1. Value\a. Gross Sales Actuals\II. 1YP\MTD
+		lineageTag: df2c1596-d3b7-4359-ad0a-708a2c840d42
+
+	measure 'MTD Gross Sales vs 1YP (Δ)' =
+			
+			[MTD Gross Sales] - [MTD Gross Sales 1YP]
+		formatString: #,##0 ↑;#,##0 ↓;#,##0
+		displayFolder: 1. Value\a. Gross Sales Actuals\II. 1YP\MTD
+		lineageTag: e0550d22-4405-4c3b-bf05-d150b153fc27
+
+	measure 'Gross Sales 2YP' =
+			
+			CALCULATE (
+			    [Gross Sales],
+			    DATEADD ('Date'[Date], -2, YEAR)
+			)
+		formatString: #,##0
+		displayFolder: 1. Value\a. Gross Sales Actuals\III. 2YP\Daily
+		lineageTag: 8788b945-6470-4988-b936-b739a0f842ea
+
+	measure 'Gross Sales vs 2YP (%)' =
+			
+			VAR _TARGET = [Gross Sales 2YP]
+			VAR _DELTA  = [Gross Sales] - _TARGET
+			VAR _PERC   = DIVIDE ( _DELTA, _TARGET )
+			RETURN
+			_PERC
+		formatString: #,##0.0% ↑;#,##0.0% ↓;#,##0.0%
+		displayFolder: 1. Value\a. Gross Sales Actuals\III. 2YP\Daily
+		lineageTag: 9362a185-8dd0-41c5-b77a-0b65c6183416
+
+	measure 'Gross Sales vs 2YP (Δ)' =
+			
+			[Gross Sales] - [Gross Sales 2YP]
+		formatString: #,##0 ↑;#,##0 ↓;#,##0
+		displayFolder: 1. Value\a. Gross Sales Actuals\III. 2YP\Daily
+		lineageTag: ee265e11-1ead-44d2-8851-f666a26db72e
+
+	measure 'MTD Gross Sales 2YP' =
+			
+			-- Calculates Target for the current month/year selection
+			VAR _CurrentMonth =
+			    CALCULATE (
+			        [Gross Sales 2YP],
+			        ALL ( 'Date' ),
+			        VALUES (
+			            'Date'[Calendar Month Year (ie Jan 21)]
+			        )
+			    )
+			
+			-- Computes rate at which Target increases through the month
+			VAR _CurrentMonthWDMTD =
+			    POWER (
+			        CALCULATE (
+			            MAX ( 'Date'[Workdays MTD %] ),
+			            'Date'[IsDateInScope] = TRUE
+			        ),
+			        0.93
+			    )
+			VAR _CurrentMonthWDTotal =
+			    POWER (
+			        CALCULATE (
+			            MAX ( 'Date'[Workdays MTD %] )
+			        ),
+			        0.93
+			    )
+			VAR _Period =
+			    SELECTEDVALUE (
+			        '4) Selected Period'[Period]
+			    )
+			VAR _HasOneMonth =
+			    HASONEVALUE (
+			        'Date'[Calendar Month Year (ie Jan 21)]
+			    )
+			RETURN
+			    -- return MTD value if a month is selected
+			    IF.EAGER (
+			        _HasOneMonth && _Period = "Full Period",
+			        _CurrentMonthWDTotal
+			            * _CurrentMonth,
+			        IF (
+			            _HasOneMonth,
+			            _CurrentMonthWDMTD
+			                * _CurrentMonth
+			        )
+			    )
+		formatString: #,##0
+		displayFolder: 1. Value\a. Gross Sales Actuals\III. 2YP\MTD
+		lineageTag: 1e93df27-b0ee-452d-b209-8e10a91109b8
+
+	measure 'MTD Gross Sales vs 2YP (%)' =
+			
+			VAR _TARGET = [MTD Gross Sales 1YP]
+			VAR _DELTA  = [MTD Gross Sales] - _TARGET
+			VAR _PERC   = DIVIDE ( _DELTA, _TARGET )
+			RETURN
+			_PERC
+		formatString: #,##0.0% ↑;#,##0.0% ↓;#,##0.0%
+		displayFolder: 1. Value\a. Gross Sales Actuals\III. 2YP\MTD
+		lineageTag: c694eb93-5caf-484f-b50d-c2601f9cd9bd
+
+	measure 'MTD Gross Sales vs. 2YP (Δ)' =
+			
+			[MTD Gross Sales] - [MTD Gross Sales 1YP]
+		formatString: #,##0 ↑;#,##0 ↓;#,##0
+		displayFolder: 1. Value\a. Gross Sales Actuals\III. 2YP\MTD
+		lineageTag: 556ddb49-2de6-4d05-bda4-197a7ed5d320
+
+	measure 'Net Sales' =
+			
+			VAR _RATE = MAX ('Exchange Rate'[Rate])
+			RETURN
+			    CALCULATE (
+			
+			        -- Convert to common currency (WAT)
+			        SUMX (
+			            'Invoices',
+			
+			            -- Net sales
+			            ('Invoices'[Net Invoice Value]
+			                + 'Invoices'[Freight]
+			                - 'Invoices'[Taxes & Commercial Fees]
+			                + 'Invoices'[Late Delivery Penalties]
+			                + 'Invoices'[Overdue Payment Penalties] )
+			
+			                / RELATED ('Budget Rate'[Rate])
+			        )
+			
+			            -- Convert to selected currency
+			            * _RATE,
+			
+			        -- Limit to dates in scope
+			        'Date'[IsDateInScope] = TRUE
+			    )
+		formatString: #,##0
+		displayFolder: 1. Value\c. Net Sales
+		lineageTag: 2afed537-1de8-4905-967c-83cf6ae8c661
+
+	measure 'Net Sales 1YP' =
+			
+			CALCULATE (
+			    [Net Sales],
+			    DATEADD ('Date'[Date], -1, YEAR)
+			)
+		formatString: #,##0
+		displayFolder: 1. Value\c. Net Sales
+		lineageTag: ad3c564a-708d-4c42-9e18-bb723225c142
+
+	measure 'Net Sales 2YP' =
+			
+			CALCULATE (
+			    [Net Sales],
+			    DATEADD ('Date'[Date], -2, YEAR)
+			)
+		formatString: #,##0
+		displayFolder: 1. Value\c. Net Sales
+		lineageTag: 7cefb57c-9696-40a1-897c-b314c3a66abd
+
+	/// The cost of the product sold and the shipment / delivery
+	measure 'Total Cost' =
+			
+			VAR _RATE = MAX ('Exchange Rate'[Rate])
+			RETURN
+			    CALCULATE (
+			
+			        -- Convert to common currency (WAT)
+			        SUMX (
+			            'Invoices',
+			
+			            -- COGS
+			            ('Invoices'[Net Invoice COGS] + 'Invoices'[Delivery Cost])
+			                / RELATED ('Budget Rate'[Rate])
+			        )
+			
+			            -- Convert to selected currency
+			            * _RATE,
+			
+			        -- Limit to dates in scope
+			        'Date'[IsDateInScope] = TRUE
+			    )
+		formatString: #,##0
+		isHidden
+		displayFolder: 1. Value\b. Cost & Penalties\I. Cost
+		lineageTag: cf432eee-c4e8-4a90-b256-81261849e567
+
+	/// The cost of the delivery only
+	measure 'Total Delivery Cost' =
+			SUMX (
+			    'Invoices',
+			    'Invoices'[Delivery Cost]
+			        / RELATED ( 'Budget Rate'[Rate] )
+			)
+			    * MAX ( 'Exchange Rate'[Rate] )
+		formatString: #,##0
+		isHidden
+		displayFolder: 1. Value\b. Cost & Penalties\I. Cost
+		lineageTag: 3e145aa8-d957-4b79-b7af-55cda240d83d
+
+	/// All costs associated with the sold product
+	measure 'Total Net Invoice COGS' =
+			SUMX (
+			    'Invoices',
+			    'Invoices'[Net Invoice COGS]
+			        / RELATED ( 'Budget Rate'[Rate] )
+			)
+			    * MAX ( 'Exchange Rate'[Rate] )
+		formatString: #,##0
+		isHidden
+		displayFolder: 1. Value\b. Cost & Penalties\I. Cost
+		lineageTag: 4ee93bec-8319-45b6-92b9-d4c906841912
+
+	measure 'Total Fees & Penalties' =
+			
+			VAR _RATE = MAX ('Exchange Rate'[Rate])
+			RETURN
+			    CALCULATE (
+			
+			        -- Convert to common currency (WAT)
+			        SUMX (
+			            'Invoices',
+			
+			            -- Total fees & penalties
+			            ('Invoices'[Late Delivery Penalties]
+			                + 'Invoices'[Overdue Payment Penalties]
+			                - 'Invoices'[Taxes & Commercial Fees])
+			
+			                / RELATED ('Budget Rate'[Rate])
+			        )
+			
+			            -- Convert to selected currency
+			            * _RATE,
+			
+			        -- Limit to dates in scope
+			        'Date'[IsDateInScope] = TRUE
+			    )
+		formatString: #,##0
+		isHidden
+		displayFolder: 1. Value\b. Cost & Penalties\II. Penalties and Adjustments
+		lineageTag: a2c8e893-19e4-4e9f-bd27-b30a74db5210
+
+	/// Late Delivery penalties occur when we fail to meet the SLA for deliveries. If the products take longer than a certain number of days to deliver after the requested delivery date, a Late Delivery Penalty is levied.
+	measure 'Total Late Delivery Penalties' =
+			SUMX (
+			    'Invoices',
+			    'Invoices'[Late Delivery Penalties]
+			        / RELATED ( 'Budget Rate'[Rate] )
+			)
+			    * MAX ( 'Exchange Rate'[Rate] )
+		formatString: #,##0
+		isHidden
+		displayFolder: 1. Value\b. Cost & Penalties\II. Penalties and Adjustments
+		lineageTag: 3ee42063-2a45-4ef0-8135-189b387479ee
+
+	/// Overdue Payments result when the customer hasn't paid their invoice within a certain number of days since the product was shipped.
+	measure 'Total Overdue Payment Penalties' =
+			SUMX (
+			    'Invoices',
+			    'Invoices'[Overdue Payment Penalties]
+			        / RELATED ( 'Budget Rate'[Rate] )
+			)
+			    * MAX ( 'Exchange Rate'[Rate] )
+		formatString: #,##0
+		isHidden
+		displayFolder: 1. Value\b. Cost & Penalties\II. Penalties and Adjustments
+		lineageTag: 279adfbb-4f1f-49e7-8f13-57c380ad1d5d
+
+	/// This measure is theSumof column 'Invoices'[Taxes & Commercial Fees]
+	measure 'Total Taxes & Commercial Fees' =
+			SUMX (
+			    'Invoices',
+			    'Invoices'[Taxes & Commercial Fees]
+			        / RELATED ( 'Budget Rate'[Rate] )
+			)
+			    * MAX ( 'Exchange Rate'[Rate] )
+		formatString: #,##0
+		isHidden
+		displayFolder: 1. Value\b. Cost & Penalties\II. Penalties and Adjustments
+		lineageTag: 187488af-0dcd-44e3-b20e-7fd7b0f489dd
+
+	/// The freight surcharge is what we charge for delivery. It is one of our lines of revenue.
+	measure 'Total Freight Surcharge' =
+			
+			VAR _RATE = MAX ('Exchange Rate'[Rate])
+			RETURN
+			    CALCULATE (
+			
+			        -- Convert to common currency (WAT)
+			        SUMX (
+			            'Invoices',
+			            'Invoices'[Freight]
+			                / RELATED ('Budget Rate'[Rate])
+			        )
+			
+			            -- Convert to selected currency
+			            * _RATE,
+			
+			        -- Limit to dates in scope
+			        'Date'[IsDateInScope] = TRUE
+			    )
+		formatString: #,##0
+		isHidden
+		displayFolder: 1. Value\b. Cost & Penalties\III. Freight
+		lineageTag: 29974f41-9300-4296-92e6-a5f0f7f5b4a6
+
+	measure 'Invoice Lines' =
+			
+			COUNTROWS ( 'Invoices' )
+		formatString: #,##0
+		displayFolder: 3. Lines
+		lineageTag: a56d5b74-2cd8-4ce0-a673-f229a09a9726
+
+	measure 'Gross Sales (Quantity)' =
+			
+			[Total Net Invoice Quantity]
+		formatString: #,##0
+		displayFolder: 2. Quantity\b. Gross Sales Actuals
+		lineageTag: 3adb6c1c-0186-4a30-90b0-a60040b44316
+
+	measure 'Gross Sales 1YP (Quantity)' =
+			
+			CALCULATE (
+			    [Gross Sales (Quantity)],
+			    DATEADD ('Date'[Date], -1, YEAR)
+			)
+		formatString: #,##0
+		displayFolder: 2. Quantity\b. Gross Sales Actuals
+		lineageTag: 7b231dac-05c2-415f-99de-7a7fbbdf3524
+
+	/// This measure is theSumof column 'Invoices'[Net Invoice Quantity]
+	measure 'Total Net Invoice Quantity' = SUM ( 'Invoices'[Net Invoice Quantity] )
+		formatString: #,##0
+		displayFolder: 2. Quantity\b. Gross Sales Actuals
+		lineageTag: 0a56a159-aefd-4473-826e-b7bb61e1ddba
+
+	column 'Billing Document Number'
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceProviderType: int
+		displayFolder: Columns
+		lineageTag: 5af8c1b0-9c62-41b6-9c46-ddb0ce3585a9
+		summarizeBy: sum
+		sourceColumn: Billing Document Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Billing Date'
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		sourceProviderType: date
+		displayFolder: Columns
+		lineageTag: 620c8eea-a6f2-4eea-9dd2-401eacc94636
+		summarizeBy: none
+		sourceColumn: Billing Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Customer Key'
+		dataType: string
+		isHidden
+		sourceProviderType: nvarchar(max)
+		displayFolder: Columns
+		lineageTag: c4c2e629-13f0-49bd-a155-6b4ab02847e1
+		summarizeBy: none
+		sourceColumn: Customer Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Billing Document Line Item Number'
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceProviderType: int
+		displayFolder: Columns
+		lineageTag: de732182-dbdd-4d23-a417-553be7c45e2b
+		summarizeBy: sum
+		sourceColumn: Billing Document Line Item Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceProviderType: bigint
+		displayFolder: Columns
+		lineageTag: d9b2b581-c637-4916-9558-494ef1fa2450
+		summarizeBy: none
+		sourceColumn: Product Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ship Date'
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		sourceProviderType: date
+		displayFolder: Columns
+		lineageTag: 2c49ff4f-96bc-48c9-a242-c1204247ce23
+		summarizeBy: none
+		sourceColumn: Ship Date
+
+		variation Variation
+			isDefault
+			relationship: 7572bf1a-bc25-432d-8287-8a015e4ddeab
+			defaultHierarchy: LocalDateTable_6b2c9e31-0c64-4034-8869-3404e703fc01.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'OTD Indicator'
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		displayFolder: Columns
+		lineageTag: 8e50d053-0fc7-4fa2-b869-24364a0ae99a
+		summarizeBy: none
+		sourceColumn: OTD Indicator
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Billing Document Type Code'
+		dataType: string
+		isHidden
+		sourceProviderType: nvarchar(max)
+		displayFolder: Columns
+		lineageTag: 705c6e4f-d7d8-4230-b26e-499b1e09188a
+		summarizeBy: none
+		sourceColumn: Billing Document Type Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Local Currency'
+		dataType: string
+		isHidden
+		sourceProviderType: nvarchar(max)
+		displayFolder: Columns
+		lineageTag: cb9f4c47-d859-423b-b802-c8a178d57440
+		summarizeBy: none
+		sourceColumn: Local Currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Delivery Cost'
+		dataType: double
+		isHidden
+		sourceProviderType: float
+		displayFolder: Columns
+		lineageTag: 9ecb1ae0-6e98-45f6-a75d-f14fa567fb57
+		summarizeBy: sum
+		sourceColumn: Delivery Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Net Invoice COGS'
+		dataType: double
+		isHidden
+		sourceProviderType: float
+		displayFolder: Columns
+		lineageTag: ef6eafe9-cb4f-4a7f-a28f-1a00be6f86a2
+		summarizeBy: sum
+		sourceColumn: Net Invoice COGS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Late Delivery Penalties'
+		dataType: double
+		isHidden
+		sourceProviderType: float
+		displayFolder: Columns
+		lineageTag: 71d608e7-9b6e-4ec6-bf86-ab3a82b5fda8
+		summarizeBy: sum
+		sourceColumn: Late Delivery Penalties
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Overdue Payment Penalties'
+		dataType: double
+		isHidden
+		sourceProviderType: float
+		displayFolder: Columns
+		lineageTag: 1d349cb7-8e68-44a1-89f6-8b9dc9c318b7
+		summarizeBy: sum
+		sourceColumn: Overdue Payment Penalties
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Taxes & Commercial Fees'
+		dataType: double
+		isHidden
+		sourceProviderType: float
+		displayFolder: Columns
+		lineageTag: a2efa68e-4950-49e5-8c33-68120ad1616d
+		summarizeBy: sum
+		sourceColumn: Taxes & Commercial Fees
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Freight
+		dataType: double
+		isHidden
+		sourceProviderType: float
+		displayFolder: Columns
+		lineageTag: e9872e0c-ba0f-4ba7-9de5-4ed3f4dc3429
+		summarizeBy: sum
+		sourceColumn: Freight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Net Invoice Value'
+		dataType: double
+		isHidden
+		sourceProviderType: float
+		displayFolder: Columns
+		lineageTag: ac304df8-7ccc-450b-8d1c-a57f93db365d
+		summarizeBy: sum
+		sourceColumn: Net Invoice Value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Net Invoice Quantity'
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceProviderType: int
+		displayFolder: Columns
+		lineageTag: 6f2da7dd-b470-4d32-98ea-5ebd10095643
+		summarizeBy: sum
+		sourceColumn: Net Invoice Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Invoices = m
+		mode: import
+		queryGroup: Tables
+		source =
+				let
+				    Source = Sql.Database(#"SqlEndpoint",#"Database"),
+				    Data = Source{[Schema="Factview",Item="Invoices"]}[Data],
+				    #"Select Columns" = Table.RemoveColumns ( Data, {"DWCreatedDate", "Net Invoice Cost"} )
+				in
+				    #"Select Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
