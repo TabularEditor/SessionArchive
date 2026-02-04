@@ -17,7 +17,7 @@ table 'Z01CG2 - Value (Budget Rate)'
 				
 				[Total Net Invoice Value]
 
-		/// The Net Invoice Cost is 
+		/// The Net Invoice Cost is
 		calculationItem 'Invoice Cost' =
 				
 				[Total Net Invoice COGS]

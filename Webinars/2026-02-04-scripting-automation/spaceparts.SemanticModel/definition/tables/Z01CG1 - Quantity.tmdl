@@ -16,7 +16,7 @@ table 'Z01CG1 - Quantity'
 				
 				[Total Net Invoice Quantity]
 
-		/// The Net Invoice Cost is 
+		/// The Net Invoice Cost is
 		calculationItem 'Invoice Cost' =
 				
 				BLANK()

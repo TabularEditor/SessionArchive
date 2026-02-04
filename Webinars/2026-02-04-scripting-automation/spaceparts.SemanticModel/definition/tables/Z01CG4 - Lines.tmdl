@@ -21,7 +21,7 @@ table 'Z01CG4 - Lines'
 				
 				[Lines]
 
-		/// The Net Invoice Cost is 
+		/// The Net Invoice Cost is
 		calculationItem 'Invoice Cost' =
 				
 				BLANK()

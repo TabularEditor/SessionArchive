@@ -19,13 +19,15 @@ queryGroup Tables
 
 	annotation PBI_QueryGroupOrder = 2
 
-extendedProperty TabularEditor_DeploymentMetadata =
+extendedProperty TabularEditor_ModelDaxPkgSeq = 2
+
+extendedProperty TabularEditor_ModelDaxPkgTable =
 		{
-		  "User": "DESKTOP-NV69I5J\\Klonk-Temp",
-		  "Time": "2025-01-10T11:42:37.9321839+01:00",
-		  "ClientMachine": "DESKTOP-NV69I5J",
-		  "DeploymentMode": "SaveUI",
-		  "TabularEditorBuild": "3.19.0.6258"
+		  "1": {
+		    "Provider": "https://api.daxlib.org",
+		    "PackageId": "DaxLib.FormatString",
+		    "Version": "0.1.2"
+		  }
 		}
 
 annotation TabularEditor_SerializeOptions = {"IgnoreInferredObjects":true,"IgnoreInferredProperties":true,"IgnoreTimestamps":true,"SplitMultilineStrings":true,"PrefixFilenames":false,"LocalTranslations":true,"LocalPerspectives":true,"LocalRelationships":true,"Levels":["Data Sources","Shared Expressions","Perspectives","Relationships","Roles","Tables","Tables/Columns","Tables/Hierarchies","Tables/Measures","Tables/Partitions","Tables/CalculationItems","Translations"]}

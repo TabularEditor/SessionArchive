@@ -1,9 +1,9 @@
 /// Everything in this Table Requires Measure Selection
-/// 1. Select a Metric 
+/// 1. Select a Metric
 /// 2. Select a Unit
 /// 3. Select a Target
 /// 4. Select a Period
-/// 5. Select a Currency (from 'Exchange Rate') 
+/// 5. Select a Currency (from 'Exchange Rate')
 /// 6. Select a Year and/or Month from 'Date'
 /// 
 table __Measures
