@@ -1,0 +1,8 @@
+EVALUATE
+
+    SUMMARIZECOLUMNS ( 
+        'Customers'[Account Type],
+        'Customers'[Key Account Name],
+        TREATAS( { "Key Account" }, 'Customers'[Account Type] ),
+        "@Nr Customers", [# Customers]
+    )

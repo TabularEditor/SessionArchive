@@ -1,0 +1,34 @@
+/// It lets you select a Metric.
+table '1) Selected Metric'
+	lineageTag: 31535870-007d-4636-8348-2f06b750951d
+
+	column Order
+		isHidden
+		lineageTag: 734455ee-3587-4f7b-bdd9-34f849747e7d
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Order]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Select a Measure'
+		lineageTag: 16dc4342-12d1-4da6-89d8-63ba7be01ddf
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Select a Measure]
+		sortByColumn: Order
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '1) Selected Metric' = calculated
+		mode: import
+		source =
+				
+				SELECTCOLUMNS(
+				    'Z01CG2 - Value (Budget Rate)',
+				        "Select a Measure", 'Z01CG2 - Value (Budget Rate)'[Measure],
+				        "Order", 'Z01CG2 - Value (Budget Rate)'[Ordinal]
+				)
+
+	annotation TabularEditor_TableGroup = Measure Selection
+

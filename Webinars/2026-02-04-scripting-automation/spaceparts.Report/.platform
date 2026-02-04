@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "spaceparts"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "afff7a4b-e17a-47b6-94f2-c8dd0faec2a1"
+  }
+}
