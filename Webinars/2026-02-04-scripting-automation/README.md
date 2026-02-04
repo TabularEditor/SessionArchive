@@ -5,7 +5,14 @@ This directory contains scripts used in the demos for the scripting and automati
 
 [The presentation is in this repo as a PDF](./scripting-automation-webinar-2026-02.pdf)
 
-There is a PBIP of the SpaceParts semantic model with functions used in the demos associated with [function-utils.csx](./function-utils.csx) (Greg's demo).
+The repo contains the following samples:
+
+- **[spaceparts.SemanticModel](./spaceparts.SemanticModel)**: A version of the SpaceParts semantic model containing UDFs
+- **[function-utils.csx](./function-utils.csx)**: C# script with utility methods for working with DAX UDFs
+- **[add-time-intelligence.bim](./add-time-intelligence.bim)**: A minimal semantic model containing calendars
+- **[add-time-intelligence.csx](./add-time-intelligence.csx)**: C# script that shows a UI for generating time intelligence measures based on date columns or calendars in the model
+- **[omni-query.csx](./omni-query.csx)**: Illustrates the use of the `EvaluateDax` helper method for running DAX queries against a model, based on the current selection in the TOM Explorer.
+- **[invoke-ai.csx](./invoke-ai.csx)**: An example of calling the OpenAI completions API through a C# script, to have the AI analyze sample data from a table.
 
 ## Helfpul links
 
