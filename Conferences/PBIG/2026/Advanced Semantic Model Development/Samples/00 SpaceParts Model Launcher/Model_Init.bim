@@ -1,0 +1,92 @@
+{
+  "name": "SpaceParts_PBIG2026",
+  "compatibilityLevel": 1702,
+  "model": {
+    "culture": "en-US",
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "discourageImplicitMeasures": true,
+    "tables": [
+      {
+        "name": "Model Info",
+        "lineageTag": "b9c79b75-8023-455a-878a-511564ddc8c3",
+        "columns": [
+          {
+            "name": "Created Date",
+            "dataType": "dateTime",
+            "sourceColumn": "CreatedDate",
+            "formatString": "General Date",
+            "lineageTag": "1a749a74-c3d7-4e91-b74e-42e9fe4c90a9",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Author",
+            "dataType": "string",
+            "sourceColumn": "Author",
+            "lineageTag": "d02cfaab-aca4-4325-bf94-e04b7b37a5de"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Model Info",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = ",
+                "        Sql.Database(",
+                "            #\"SqlEndpoint\",",
+                "            #\"Database\",",
+                "            [",
+                "                Query = \"SELECT CAST('2026-03-03' AS DATETIME) AS CreatedDate, 'Borp' AS Author\"",
+                "            ]",
+                "        )",
+                "in",
+                "    Source"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "expressions": [
+      {
+        "name": "SqlEndpoint",
+        "kind": "m",
+        "expression": "\"te3-training-eu.database.windows.net\" meta [IsParameterQuery=true, Type=\"Text\", IsParameterQueryRequired=true]",
+        "lineageTag": "f68d1afd-70bf-421a-9fea-00339a0fabf1"
+      },
+      {
+        "name": "Database",
+        "kind": "m",
+        "expression": "\"SpacePartsCoDW\" meta [IsParameterQuery=true, Type=\"Text\", IsParameterQueryRequired=true]",
+        "lineageTag": "556304c5-c39f-42d5-ab08-451e8e67649b"
+      },
+      {
+        "name": "RangeStart",
+        "kind": "m",
+        "expression": "#datetime(2010, 1, 1, 0, 0, 0) meta [IsParameterQuery=true, Type=\"DateTime\", IsParameterQueryRequired=true]",
+        "lineageTag": "fb675bf7-fdb3-4717-911c-e85ddd9ded0f"
+      },
+      {
+        "name": "RangeEnd",
+        "kind": "m",
+        "expression": "#datetime(2030, 1, 1, 0, 0, 0) meta [IsParameterQuery=true, Type=\"DateTime\", IsParameterQueryRequired=true]",
+        "lineageTag": "b7b48c54-39ea-44d6-a217-b5ea0f3d16f2"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "__TEdtr",
+        "value": "1"
+      },
+      {
+        "name": "TabularProcessingBatch_Budget",
+        "value": "full"
+      },
+      {
+        "name": "TabularEditor_SerializeOptions",
+        "value": "{\"IgnoreInferredObjects\":true,\"IgnoreInferredProperties\":true,\"IgnoreTimestamps\":true,\"SplitMultilineStrings\":true,\"PrefixFilenames\":false,\"LocalTranslations\":false,\"LocalPerspectives\":false,\"SortArrays\":false,\"LocalRelationships\":false,\"Levels\":[\"Data Sources\",\"Perspectives\",\"Relationships\",\"Roles\",\"Shared Expressions\",\"Tables\",\"Tables/Calculation Items\",\"Tables/Columns\",\"Tables/Hierarchies\",\"Tables/Measures\",\"Tables/Partitions\",\"Translations\"]}"
+      }
+    ]
+  }
+}
