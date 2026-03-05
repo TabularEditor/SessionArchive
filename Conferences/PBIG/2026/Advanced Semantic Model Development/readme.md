@@ -31,6 +31,8 @@ Attendees should already be familiar with basic semantic model concepts (tables,
 
 Download the full SpaceParts Power BI file [here](https://tabulareditor365-my.sharepoint.com/:u:/g/personal/peer_gronnerup_tabulareditor_com/IQBAie9m7lOnT6HdQ3_Rh-3AAY2EvtE2nHMMr0xmP0jvoeE?e=iQ92f0).
 
+Learn more about the SpaceParts dataset [here](https://tabulareditor.com/blog/reintroducing-the-spaceparts-dataset).
+
 
 ---
 
