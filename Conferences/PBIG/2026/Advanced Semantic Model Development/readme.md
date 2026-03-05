@@ -58,3 +58,4 @@ Learn more about the SpaceParts dataset [here](https://tabulareditor.com/blog/re
 ## Appendix
 
 - **[Using Roslyn compiler in TE2 scripting](https://docs.tabulareditor.com/how-tos/Advanced-Scripting.html#compiling-with-roslyn)**: for more modern C# language features
+- **[Master model pattern](https://docs.tabulareditor.com/how-tos/Master-model-pattern.html)**
