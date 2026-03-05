@@ -29,6 +29,9 @@ In this full-day workshop, we take a deep dive into the **Tabular Object Model (
 **Prerequisites:**
 Attendees should already be familiar with basic semantic model concepts (tables, columns, measures, relationships) and have basic experience navigating Tabular Editor (free or paid). Please install [Tabular Editor](https://tabulareditor.com/) on your machine ahead of the workshop for the hands-on exercises.
 
+Download the full SpaceParts Power BI file [here](https://tabulareditor365-my.sharepoint.com/:u:/g/personal/peer_gronnerup_tabulareditor_com/IQBAie9m7lOnT6HdQ3_Rh-3AAY2EvtE2nHMMr0xmP0jvoeE?e=iQ92f0).
+
+
 ---
 
 ## Agenda
@@ -47,6 +50,5 @@ Attendees should already be familiar with basic semantic model concepts (tables,
 ---
 
 ## Table of Contents
-
 
 - **[Module 1](Module%201%20-%20C%23%20Scripting)**
