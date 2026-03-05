@@ -676,10 +676,9 @@ launchButton.Click += (sender, evnt) =>
     @"let
         Source = Sql.Database(#""SqlEndpoint"",#""Database""),
         Data = Source{[Schema=""Factview"",Item=""Budget""]}[Data],
-        #""Select Columns"" = Table.SelectColumns ( Data, {""Customer Key"", ""Month"", ""Product Key"", ""Total Budget""} ),
-        #""Renamed Columns"" = Table.RenameColumns(#""Select Columns"",{{""Total Budget"", ""Budget (EUR)""}})
+        #""Select Columns"" = Table.SelectColumns ( Data, {""Customer Key"", ""Month"", ""Product Key"", ""Total Budget""} )
     in
-        #""Renamed Columns""");
+        #""Select Columns""");
             t.Partitions["Budget"].Delete();
         } else {
             t.Partitions[0].Query = "SELECT * FROM [Factview].[Budget]";
