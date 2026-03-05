@@ -48,7 +48,5 @@ Attendees should already be familiar with basic semantic model concepts (tables,
 
 ## Table of Contents
 
-- **[Module 1 - C# Scripting](Module%201%20-%20C%23%20Scripting)**
-- **[Module 2 - TOM Exploration](Module%202%20-%20TOM%20Exploration)**
-- **[Module 3 - Advanced TOM and Best Practice Analyzer](Module%203%20-%20Advanced%20TOM%20and%20Best%20Practice%20Analyzer)**
-- **[Module 4 - Automation and CLI](Module%204%20-%20Automation%20and%20CLI)**
+
+- **[Module 1](Module%201%20-%20C%23%20Scripting)**
